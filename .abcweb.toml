@@ -1,0 +1,25 @@
+# This file represents the configuration used to generate your app.
+# It is loaded by some abcweb commands, for example, the "gen config" command.
+# This allows your fresh configuration to mimic the correct state of your app.
+app-path = '/Users/grantsmith/Workspaces/src/github.com/grantrobertsmith/votem-vote'
+import-path = 'github.com/grantrobertsmith/votem-vote'
+app-name = 'votem-vote'
+app-env-name = 'VOTEM_VOTE'
+tls-common-name = 'localhost'
+prod-storer = 'disk'
+dev-storer = 'cookie'
+default-env = 'prod'
+bootstrap = 'regular'
+no-bootstrap-js = false
+no-gulp = false
+no-font-awesome = false
+no-live-reload = false
+no-tls-certs = false
+no-readme = false
+no-config = false
+no-sessions = false
+force-overwrite = false
+skip-npm-install = false
+skip-dep-ensure = false
+skip-git-init = false
+silent = false

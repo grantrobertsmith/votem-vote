@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>votem-vote</title>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="/favicon.ico">
+
+		{{ cssPath "bootstrap/bootstrap.css" | cssTag }}
+		{{ cssPath "font-awesome/font-awesome.css" | cssTag }}
+		{{ cssPath "main.css" | cssTag }}
+		{{if config.Server.LiveReload -}}
+         {{liveReload "livereload.js" "localhost" | jsTag }}
+      {{- end}}
+	</head>
+	<body>
+		{{ yield }}<!-- jquery is a twitter bootstrap dependency -->
+		{{ jsPath "jquery-3.1.1.js" | jsTag }}
+
+		<!-- tether is a twitter bootstrap tooltips dependency -->
+		{{ jsPath "tether.js" | jsTag }}
+
+		<!-- include all twitter bootstrap javascript plugins -->
+		{{ jsBootstrap }}
+	</body>
+</html>
