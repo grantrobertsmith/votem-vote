@@ -1,0 +1,10 @@
+blacklist=["migrations", "other"]
+schema="public"
+[postgres]
+  dbname="votem_vote_dev"
+  host="localhost"
+  port=5432
+  user="grantsmith"
+  pass=""
+  sslmode="disable"
+

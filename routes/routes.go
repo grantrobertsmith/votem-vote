@@ -24,6 +24,11 @@ func NewRouter(a *app.App, middlewares []abcmiddleware.MiddlewareFunc) *chi.Mux 
 		Session: a.Session,
 	}
 
+	// The common state for the api handler
+	apiRoot := controllers.Root{
+		Session: a.Session,
+	}
+
 	// 404 route handler
 	notFound := abcserver.NewNotFoundHandler(a.AssetsManifest)
 	router.NotFound(notFound.Handler(a.Config.Server, a.Render))
@@ -43,6 +48,11 @@ func NewRouter(a *app.App, middlewares []abcmiddleware.MiddlewareFunc) *chi.Mux 
 
 	main := controllers.Main{Root: root}
 	router.Get("/", e(main.Home))
+
+	api := controllers.Main{Root: apiRoot}
+	router.Post("/api/authenticate", e(api.Authenticate))
+	router.Post("/api/users", e(api.Register))
+	router.Post("/api/vote", e(api.Vote))
 
 	return router
 }

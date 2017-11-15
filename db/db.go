@@ -7,7 +7,7 @@ import (
 	"github.com/volatiletech/abcweb/abcdatabase"
 	// Import your database drivers below by uncommenting your relevant driver.
 	// _ "github.com/go-sql-driver/mysql"
-	// _ "github.com/lib/pq"
+	_ "github.com/lib/pq"
 )
 
 // DB is the global database handle to your config defined db

@@ -1,0 +1,6 @@
+development:
+	dialect: postgres
+	datasource: dbname=votem-vote-dev sslmode=disable
+	dir: db/migrations
+	table: migrations
+
