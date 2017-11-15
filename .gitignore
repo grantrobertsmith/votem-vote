@@ -34,3 +34,6 @@ dist
 votem-vote
 votem-vote.exe
 votem-vote.zip
+
+# Ignore OS specific files
+*.DS_Store
