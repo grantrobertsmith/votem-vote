@@ -532,7 +532,7 @@ func testVotedBallotsSelect(t *testing.T) {
 }
 
 var (
-	votedBallotDBTypes = map[string]string{`BallotIssue`: `text`, `ID`: `uuid`, `RCV`: `jsonb`, `UnexpiredTerm`: `text`, `VoteFor2`: `jsonb`}
+	votedBallotDBTypes = map[string]string{`BallotIssue`: `text`, `ID`: `uuid`, `RCV`: `jsonb`, `UnexpiredTerm`: `text`, `VoteFor2`: `jsonb`, `VoterEmail`: `text`}
 	_                  = bytes.MinRead
 )
 

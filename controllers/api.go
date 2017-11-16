@@ -125,24 +125,20 @@ func (m Main) Register(w http.ResponseWriter, r *http.Request) error {
 
 // Ballot Submission Endpoint
 func (m Main) Vote(w http.ResponseWriter, r *http.Request) error {
-	type VotedBallot struct {
-		VoterEmail	string		`json:"voterEmail"`
-		RCV			[]string	`json:"rvc"`
-		UT			string		`json:"ut"`
-		VF2			[]string	`json:"vf2"`
-		BI			string		`json:"bi"`
-	}
-
 	body, err := ioutil.ReadAll(r.Body)
     if err != nil {
         return err
     }
 
-	var votedBallot VotedBallot
+	var votedBallot models.VotedBallot
 	err = json.Unmarshal(body, &votedBallot)
     if err != nil {
         return err
     }
+
+	if err := votedBallot.Insert(db.DB); err != nil {
+		return err
+	}
 
 	response, _ := json.Marshal(Response{
 		Success: true,

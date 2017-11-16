@@ -21,11 +21,11 @@
     Reese WithoutASpoon for CIC
     Cherry Garia for Vice Ice`,
                 `Republican Ticket:
-    Reese WithoutASpoon for CIC
-    Cherry Garia for Vice Ice`,
+    Choco 'Chip' Dough for CIC
+    Carmela Coney for Vice Ice`,
                 `Independent Ticket:
-    Reese WithoutASpoon for CIC
-    Cherry Garia for Vice Ice`,
+    Magic Browny for CIC
+    Phish Food for Vice Ice`,
             ]
         };
         vm.ut = {
@@ -147,14 +147,17 @@
         }
 
         function submitVote() {
+            // remove placeholder used for UI
+            vm.rcv.voter_selections.splice(vm.rcv.voter_selections.length - 1, 1);
+
             vm.dataLoading = true;
 
             VoteService.SubmitBallot({
-                voterEmail: $rootScope.globals.currentUser.email,
+                voter_email: $rootScope.globals.currentUser.email,
                 rcv: vm.rcv.voter_selections,
-                ut: vm.ut.voter_selection,
-                vf2: vm.vf2.voter_selections,
-                bi: vm.bi.voter_selection
+                unexpired_term: vm.ut.voter_selection,
+                vote_for_2: vm.vf2.voter_selections,
+                ballot_issue: vm.bi.voter_selection
 
             }).then(function (response) {
                 if (response.success) {

@@ -17,16 +17,17 @@ import (
 	"github.com/volatiletech/sqlboiler/queries"
 	"github.com/volatiletech/sqlboiler/queries/qm"
 	"github.com/volatiletech/sqlboiler/strmangle"
-	"gopkg.in/volatiletech/null.v6"
+	"github.com/volatiletech/sqlboiler/types"
 )
 
 // VotedBallot is an object representing the database table.
 type VotedBallot struct {
-	ID            string      `boil:"id" json:"id" toml:"id" yaml:"id"`
-	RCV           null.JSON   `boil:"rcv" json:"rcv,omitempty" toml:"rcv" yaml:"rcv,omitempty"`
-	UnexpiredTerm null.String `boil:"unexpired_term" json:"unexpired_term,omitempty" toml:"unexpired_term" yaml:"unexpired_term,omitempty"`
-	VoteFor2      null.JSON   `boil:"vote_for_2" json:"vote_for_2,omitempty" toml:"vote_for_2" yaml:"vote_for_2,omitempty"`
-	BallotIssue   null.String `boil:"ballot_issue" json:"ballot_issue,omitempty" toml:"ballot_issue" yaml:"ballot_issue,omitempty"`
+	ID            string     `boil:"id" json:"id" toml:"id" yaml:"id"`
+	VoterEmail    string     `boil:"voter_email" json:"voter_email" toml:"voter_email" yaml:"voter_email"`
+	RCV           types.JSON `boil:"rcv" json:"rcv" toml:"rcv" yaml:"rcv"`
+	UnexpiredTerm string     `boil:"unexpired_term" json:"unexpired_term" toml:"unexpired_term" yaml:"unexpired_term"`
+	VoteFor2      types.JSON `boil:"vote_for_2" json:"vote_for_2" toml:"vote_for_2" yaml:"vote_for_2"`
+	BallotIssue   string     `boil:"ballot_issue" json:"ballot_issue" toml:"ballot_issue" yaml:"ballot_issue"`
 
 	R *votedBallotR `boil:"-" json:"-" toml:"-" yaml:"-"`
 	L votedBallotL  `boil:"-" json:"-" toml:"-" yaml:"-"`
@@ -34,12 +35,14 @@ type VotedBallot struct {
 
 var VotedBallotColumns = struct {
 	ID            string
+	VoterEmail    string
 	RCV           string
 	UnexpiredTerm string
 	VoteFor2      string
 	BallotIssue   string
 }{
 	ID:            "id",
+	VoterEmail:    "voter_email",
 	RCV:           "rcv",
 	UnexpiredTerm: "unexpired_term",
 	VoteFor2:      "vote_for_2",
@@ -54,8 +57,8 @@ type votedBallotR struct {
 type votedBallotL struct{}
 
 var (
-	votedBallotColumns               = []string{"id", "rcv", "unexpired_term", "vote_for_2", "ballot_issue"}
-	votedBallotColumnsWithoutDefault = []string{"rcv", "unexpired_term", "vote_for_2", "ballot_issue"}
+	votedBallotColumns               = []string{"id", "voter_email", "rcv", "unexpired_term", "vote_for_2", "ballot_issue"}
+	votedBallotColumnsWithoutDefault = []string{"voter_email", "rcv", "unexpired_term", "vote_for_2", "ballot_issue"}
 	votedBallotColumnsWithDefault    = []string{"id"}
 	votedBallotPrimaryKeyColumns     = []string{"id"}
 )
