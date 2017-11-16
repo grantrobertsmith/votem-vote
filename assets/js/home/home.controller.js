@@ -7,7 +7,7 @@
 
     HomeController.$inject = ['VoteService', 'UserService', '$rootScope', '$timeout', '$scope', '$route', 'FlashService'];
     function HomeController(VoteService, UserService, $rootScope, $timeout, $scope, $route, FlashService) {
-        const EMPTY_SELECTION_CANDIDACY = `-- SELECT CANDIDATES --`;
+        const EMPTY_SELECTION_CANDIDACY = `-- ABSTAIN FROM ADDITIONAL SELECTION --`;
 
         var vm = this;
 
