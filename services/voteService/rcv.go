@@ -64,10 +64,13 @@ func tabulateRoundResults(ballots models.VotedBallotSlice, contestKey string) (r
 			voterSelections.Unmarshal(&voterSelectionsAsStrings)
 		}
 
-		votedOption := voterSelectionsAsStrings[0]
-		if !eliminatedContestOptions[votedOption] {
-			results[votedOption]++
-			ballotCount++
+		var foundVote = false
+		for _, votedOption := range voterSelectionsAsStrings {
+			if (!foundVote && !eliminatedContestOptions[votedOption]) {
+				results[votedOption]++
+				ballotCount++
+				foundVote = true
+			}
 		}
 	}
 
@@ -85,10 +88,19 @@ func checkForMajority(result RoundResult) bool {
 }
 
 func eliminateLowestPreference(result RoundResult, contestKey string) {
-	// var optionsToEliminate []string
-	// var lowestTotal int
+	var optionToEliminate string
+	var lowestTotal int = -1
 
+	for v, k := range result.RoundTabulation {
+		if (k < lowestTotal || lowestTotal == -1) {
+			lowestTotal = k
+			optionToEliminate = v
+		}
+	}
 
+	if (contestKey == "rcv") {
+		rcvContestsStates[contestKey].EliminatedContestOptions[optionToEliminate] = true
+	}
 }
 
 func displayRoundResult(roundResult RoundResult, roundNumber int) {
@@ -100,6 +112,6 @@ func displayRoundResult(roundResult RoundResult, roundNumber int) {
 		foundMajorityStatement = "the winner is unclear."
 	}
 
-	fmt.Printf("\tAfter round %d, %s.", roundNumber, foundMajorityStatement)
+	fmt.Printf("\n\n\tAfter round %d, %s.", roundNumber, foundMajorityStatement)
 	DisplayResults(roundResult.RoundTabulation)
 }
