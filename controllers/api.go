@@ -10,7 +10,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	. "github.com/volatiletech/sqlboiler/queries/qm"
 
-	"github.com/grantrobertsmith/votem-vote/password-service/password"
+	"github.com/grantrobertsmith/votem-vote/services/passwordService"
 	"github.com/grantrobertsmith/votem-vote/db/models"
 	"github.com/grantrobertsmith/votem-vote/db"
 )
@@ -50,7 +50,7 @@ func (m Main) Authenticate(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	human := humans[0]
-	if human == nil || !password.CheckPasswordHash(loginInfo.Password, human.PasswordHash) {
+	if human == nil || !passwordService.CheckPasswordHash(loginInfo.Password, human.PasswordHash) {
 		response, _ := json.Marshal(Response{
 			Success: false,
 			Message: "Incorrect Email or Password.",
@@ -98,7 +98,7 @@ func (m Main) Register(w http.ResponseWriter, r *http.Request) error {
         return err
     }
 
-	user.Human.PasswordHash, err = password.HashPassword(user.Password)
+	user.Human.PasswordHash, err = passwordService.HashPassword(user.Password)
 	if err != nil {
 		return err
 	}
