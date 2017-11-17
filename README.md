@@ -7,20 +7,29 @@ Before you begin, please make sure you have Golang and Postgres installed and ru
 3. Useful instructions for getting Node, NPM and Gulp setup can be found at https://github.com/volatiletech/abcweb#how-do-i-install-nodejs-npm-and-gulp
 
 Install the following command line tools from volatile tech through go:
+
 `go get -u github.com/volatiletech/abcweb`
+
 `go get -u github.com/volatiletech/sqlbuilder`
+
 `go get -u github.com/volatiletech/mig`
 
 Set environment variables:
+
 `export votem_secret=something_secret_$5432jfiowe23`
+
 `export VOTEM_PG_USER=<your postgres user>`
 
 Setup the database:
+
 `createdb votem_vote_dev`
+
 `cd db/migrations && mig up postgres "user=$VOTEM_PG_USER dbname=votem_vote_dev sslmode=disable""`
+
 `cd db && sqlboiler --wipe postgres`
 
 Starting the application:
+
 `abcweb dev`
 
 Viewing in browser:
