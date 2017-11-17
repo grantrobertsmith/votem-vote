@@ -1,12 +1,13 @@
 ## Getting Started 
 
-Before you begin, please make sure you have Golang and Postgres installed and running locally:
+### Before you begin, please make sure you have Golang and Postgres installed and running locally:
 
 1. Postgres can be found at https://www.postgresql.org/download/
 2. Golang setup can be found at https://golang.org/doc/install
 3. Useful instructions for getting Node, NPM and Gulp setup can be found at https://github.com/volatiletech/abcweb#how-do-i-install-nodejs-npm-and-gulp
 
-Install the following command line tools from volatile tech through go:
+
+### Install the following command line tools from volatile tech through go:
 
 `go get -u github.com/volatiletech/abcweb`
 
@@ -14,13 +15,14 @@ Install the following command line tools from volatile tech through go:
 
 `go get -u github.com/volatiletech/mig`
 
-Set environment variables:
+### Set environment variables:
 
 `export votem_secret=something_secret_$5432jfiowe23`
 
 `export VOTEM_PG_USER=<your postgres user>`
 
-Setup the database:
+
+### Setup the database:
 
 `createdb votem_vote_dev`
 
@@ -28,12 +30,16 @@ Setup the database:
 
 `cd db && sqlboiler --wipe postgres`
 
-Starting the application:
+
+### Starting the application:
 
 `abcweb dev`
 
-Viewing in browser:
+
+### Viewing in browser:
+
 http://localhost:4000
+
 
 I expect these instructions are general and your machine may require additional system 
 adminstration to deploy this project locally. For further assistance, please contact me 
@@ -48,14 +54,17 @@ is designed to facillitate voters wanting to cast a ballot securely over the int
 such as voter registration and ballot construction are required to fully support the digital voting 
 ecosystem.
 
+
 ### Template project work
 
 Please see ATTRIBUTION and LICENSE files for work that is the contributor's own.
+
 
 ### Project work
 
 The ballot UI construction, controller and services are the author's own. The server side services, scripts 
 and database schema are the author's own.
+
 
 ### Future work
 
@@ -64,6 +73,7 @@ A few next steps:
 1. Finish auth token implementation
 2. Write unit tests for new code
 3. Implement a blockchain integration for keeping an audit trail of voter actions outside of the database
+
 
 ## Auto-Generated README Follows...
 
