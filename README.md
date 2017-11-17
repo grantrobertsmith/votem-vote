@@ -57,7 +57,7 @@ ecosystem.
 
 ### Template project work
 
-Please see ATTRIBUTION and LICENSE files for work that is the contributor's own.
+Please see ATTRIBUTION and LICENSE files for work that is _not_ the contributor's own.
 
 
 ### Project work
