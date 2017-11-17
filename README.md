@@ -18,7 +18,7 @@
 
 ### Set environment variables:
 
-Edit db/sqlboiler.toml to reference the appropriate postgres user.
+Edit `db/sqlboiler.toml` to reference the appropriate postgres user.
 
 `export votem_secret=something_secret_$5432jfiowe23`
 
