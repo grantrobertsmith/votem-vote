@@ -15,7 +15,10 @@
 
 `go get -u github.com/volatiletech/mig`
 
+
 ### Set environment variables:
+
+Edit db/sqlboiler.toml to reference the appropriate postgres user.
 
 `export votem_secret=something_secret_$5432jfiowe23`
 
